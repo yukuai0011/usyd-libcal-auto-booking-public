@@ -1,5 +1,6 @@
 import argparse
 import json
+from math import e
 
 import pyotp
 from playwright.sync_api import sync_playwright
@@ -109,11 +110,14 @@ with sync_playwright() as p:
         page.wait_for_timeout(5000)
 
         for task in booking_seats["tasks"]:
-            book_seat(
-                page,
-                task["booking_page_url"],
-                task["seat_full_xpath"],
-                task["num_days_from_now"],
-            )
-
+            try:
+                book_seat(
+                    page,
+                    task["booking_page_url"],
+                    task["seat_full_xpath"],
+                    task["num_days_from_now"],
+                )
+            except Exception as e:
+                print(f"Error occurred: {e}")
+                continue
         browser.close()
