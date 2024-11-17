@@ -84,9 +84,8 @@ with sync_playwright() as p:
         ).fill(unikey)
         page.wait_for_timeout(1000)
         page.locator(
-            "/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[4]/div/div[2]/span/input"
+            "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[4]/div/div[2]/span/input"
         ).fill(uni_password)
-
         page.locator(
             "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[2]/input"
         ).click()
