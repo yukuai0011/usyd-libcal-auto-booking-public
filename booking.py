@@ -73,7 +73,7 @@ def book_seat(
 
 with sync_playwright() as p:
     for browser_type in [p.chromium]:
-        browser = browser_type.launch(headless=False, channel="msedge-beta")
+        browser = browser_type.launch()
         page = browser.new_page()
 
         page.goto("https://sso.sydney.edu.au")
