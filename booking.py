@@ -73,7 +73,7 @@ def book_seat(
 
 with sync_playwright() as p:
     for browser_type in [p.chromium]:
-        browser = browser_type.launch()
+        browser = browser_type.launch(headless=False, channel="msedge-beta")
         page = browser.new_page()
 
         page.goto("https://sso.sydney.edu.au")
@@ -82,6 +82,9 @@ with sync_playwright() as p:
         page.locator(
             "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[3]/div[1]/div[2]/span/input"
         ).fill(unikey)
+        page.locator(
+            "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[2]/input"
+        ).click()
         page.wait_for_timeout(1000)
         page.locator(
             "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[4]/div/div[2]/span/input"
