@@ -81,11 +81,11 @@ with sync_playwright() as p:
         # click button based on Xpath
         page.locator(
             "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[3]/div[1]/div[2]/span/input"
-        ).first.fill(unikey)
+        ).fill(unikey)
         page.wait_for_timeout(1000)
         page.locator(
-            "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[4]/div/div[2]/span/input"
-        ).first.fill(uni_password)
+            "/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[1]/div[4]/div/div[2]/span/input"
+        ).fill(uni_password)
 
         page.locator(
             "xpath=/html/body/div[2]/main/div[2]/div/div/div[2]/form/div[2]/input"
